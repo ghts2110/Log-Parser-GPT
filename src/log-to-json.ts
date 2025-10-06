@@ -7,19 +7,19 @@ const outDir  = path.join(__dirname, '..', 'logs/output');
 type Dirent = import("fs").Dirent;
 
 async function getAllLogFiles(dir: string): Promise<string[]> {
-    const entries: Dirent[] = await fs.readdir(dir, { withFileTypes: true });
+  const entries: Dirent[] = await fs.readdir(dir, { withFileTypes: true });
 
-    const files = await Promise.all(
-        entries
-        .filter((entry) => !entry.name.startsWith('.')) 
-        .map(async (entry) => {
-            const fullPath = path.join(dir, entry.name);
+  const files = await Promise.all(
+      entries
+      .filter((entry) => !entry.name.startsWith('.')) 
+      .map(async (entry) => {
+          const fullPath = path.join(dir, entry.name);
 
-            if (entry.isDirectory()) return getAllLogFiles(fullPath);
-            
-            return [fullPath];
-        })
-    );
+          if (entry.isDirectory()) return getAllLogFiles(fullPath);
+          
+          return [fullPath];
+      })
+  );
 
     return files.flat();
 }
@@ -41,8 +41,6 @@ async function convertToJSON(srcPath: string) {
 
   await fs.mkdir(outDir, { recursive: true });
   await fs.writeFile(outPath, JSON.stringify(parsedLines, null, 2), "utf8");
-  
-  console.log(`- Copiado para JSON: ${path.relative(process.cwd(), outPath)}`);
 }
 
 export async function logToJson() {

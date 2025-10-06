@@ -1,4 +1,5 @@
 import { logToJson } from "./log-to-json";
+import { simulate } from "./simulate";
 
 async function main() {
   const args = process.argv.slice(2);
@@ -8,7 +9,7 @@ async function main() {
     await logToJson();
   }
 
-  
+  simulate();
 }
 
 main().catch((err) => {
