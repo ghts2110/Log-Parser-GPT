@@ -18,12 +18,10 @@
 		"url": "https://github.com/ghts2110/Log-Parser-GPT/issues"
 	},
 	"homepage": "https://github.com/ghts2110/Log-Parser-GPT#readme",
-	"dependencies": {
+	"devDependencies": {
+		"@biomejs/biome": "^2.2.5",
 		"@types/node": "^24.7.0",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.9.3"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "^2.2.5"
 	}
 }
