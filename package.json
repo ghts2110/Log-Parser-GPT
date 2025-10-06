@@ -1,0 +1,29 @@
+{
+	"name": "log-parser-gpt",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "ts-node src/main.ts"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ghts2110/Log-Parser-GPT.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/ghts2110/Log-Parser-GPT/issues"
+	},
+	"homepage": "https://github.com/ghts2110/Log-Parser-GPT#readme",
+	"dependencies": {
+		"@types/node": "^24.7.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.9.3"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.2.5"
+	}
+}
