@@ -24,7 +24,7 @@ async function getAllFiles(dir: string): Promise<string[]> {
     return files.flat();
 }
 
-async function promptChoice(files: string[]){
+async function promptChoice(files: string[]): Promise<string | undefined> {
     if(files.length === 0) {
         console.log('Nenhum arquivo JSON encontrado em logs/output/.');
         return;
@@ -48,12 +48,82 @@ async function promptChoice(files: string[]){
     });
 
     const index = Number(answer) -1;
-    const chosenFile = path.join(outDir, files[index]);
+    if(index < 0 || index >= files.length ) {
+        console.log('Escolha inválida. Tente novamente.');
+        return;
+    }
 
-    return chosenFile;
+    return files[index];
+}   
+
+async function actionChoice(fileChoice: string) {
+    const actions = ['categorização', 'resposta', 'tools'];
+
+    for(const [index, action] of actions.entries()){
+        console.log(`[${index + 1}] ${action}`);
+    }
+    
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    const answer = await new Promise<string>((resolve) => {
+        rl.question("Digite o número da ação que deseja simular: ", (input) => {
+        rl.close();
+        resolve(input.trim());
+        });
+    });
+
+    const choice = Number(answer);
+    if (![1, 2, 3].includes(choice)) {
+        console.log("Opção inválida.");
+        return;
+    }
+
+    const content = await fs.readFile(fileChoice, 'utf-8');
+    const data = JSON.parse(content);
+
+    // determina a ocorrência alvo conforme a escolha
+    const targetOccurrences: Record<1 | 2 | 3, number> = { 1: 1, 2: 3, 3: 5 };
+    const target = targetOccurrences[choice as 1 | 2 | 3];
+
+    let count = 0;
+    let found = null;
+
+    for (const d of data) {
+        if (d.model) {
+        count++;
+        if (count === target) {
+            found = d;
+            break;
+        }
+        }
+    }
+
+    if (!found) {
+        console.log(`Não foi possível encontrar a ${target}ª ocorrência de "model" neste arquivo.`);
+        return;
+    }
+
+    return found;
 }   
 
 export async function simulate() {
     const allFiles = await getAllFiles(outDir);
-    promptChoice(allFiles)
+
+    let fileChoice: string | undefined;
+
+    while (!fileChoice) {
+        fileChoice = await promptChoice(allFiles);
+    }
+
+    let prompt: any;
+
+    while (!prompt) {
+        prompt = await actionChoice(fileChoice);
+    }
+    
+    const messages = prompt.messages;
+    console.log("Prompt selecionado:", messages);
 }
