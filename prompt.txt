@@ -1,0 +1,14 @@
+[
+  {
+    "role": "system",
+    "content": "Classify this message in the following categories: greeting, doubt, acknowledgement, solicitation, other."
+  },
+  {
+    "role": "user",
+    "content": "oi"
+  },
+  {
+    "role": "assistant",
+    "content": "This message is under the category: "
+  }
+]

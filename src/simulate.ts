@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import readline from "node:readline";
+import { watchPrompt } from "./watch-prompt";
 
 const outDir  = path.join(__dirname, '..', 'logs/output');
 
@@ -56,7 +57,9 @@ async function promptChoice(files: string[]): Promise<string | undefined> {
     return files[index];
 }   
 
+// lembrar de anotar que precisa mudar aqui sempre que adicionar uma ação nova
 async function actionChoice(fileChoice: string) {
+    // ações disponíveis
     const actions = ['categorização', 'resposta', 'tools'];
 
     for(const [index, action] of actions.entries()){
@@ -125,5 +128,11 @@ export async function simulate() {
     }
     
     const messages = prompt.messages;
-    console.log("Prompt selecionado:", messages);
+
+    const promptText = JSON.stringify(messages, null, 2);
+    const promptPath = path.join(__dirname, "..", "prompt.txt");
+
+    await fs.writeFile(promptPath, promptText, 'utf-8');
+
+    watchPrompt();
 }
