@@ -5,7 +5,7 @@ import { callLLM } from "./llm";
 
 const promptPath = path.join(__dirname, "..", "prompt.txt");
 
-async function readPromptFile() {
+async function readPromptFile(filePath: string) {
     try {
         const content = await fs.promises.readFile(promptPath, 'utf-8');
         console.log("Conteúdo do prompt.txt:\n", content);
@@ -24,7 +24,7 @@ async function readPromptFile() {
 
         const ans = Number(answer);
         if (ans === 1) {
-            const response = callLLM()
+            const response = callLLM(filePath)
             console.log("\nResposta da LLM:\n", await response);
         }
 
@@ -33,14 +33,14 @@ async function readPromptFile() {
     }
 }
 
-export function watchPrompt() {
-    readPromptFile()
+export function watchPrompt(filePath: string) {
+    readPromptFile(filePath)
 
     fs.watch(promptPath, async (eventType) => {
         if (eventType === 'change') {
             console.clear();
             console.log("prompt.txt foi modificado. Novo conteúdo:");
-            await readPromptFile();
+            await readPromptFile(filePath);
         }
     });
 }

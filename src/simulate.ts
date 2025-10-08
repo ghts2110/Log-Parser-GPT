@@ -1,29 +1,10 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import readline from "node:readline";
+import { creatFile, creatFolder, getAllFiles } from "./file-management";
 import { watchPrompt } from "./watch-prompt";
 
 const outDir  = path.join(__dirname, '..', 'logs/output');
-
-type Dirent = import("fs").Dirent;
-
-async function getAllFiles(dir: string): Promise<string[]> {
-    const entries: Dirent[] = await fs.readdir(dir, { withFileTypes: true });
-
-    const files = await Promise.all(
-        entries
-        .filter((entry) => !entry.name.startsWith('.')) 
-        .map(async (entry) => {
-            const fullPath = path.join(dir, entry.name);
-
-            if (entry.isDirectory()) return getAllFiles(fullPath);
-            
-            return [fullPath];
-        })
-    );
-
-    return files.flat();
-}
 
 async function promptChoice(files: string[]): Promise<string | undefined> {
     if(files.length === 0) {
@@ -57,7 +38,7 @@ async function promptChoice(files: string[]): Promise<string | undefined> {
     return files[index];
 }   
 
-// lembrar de anotar que precisa mudar aqui sempre que adicionar uma ação nova
+let filePath: any;
 async function actionChoice(fileChoice: string) {
     // ações disponíveis
     const actions = ['categorização', 'resposta', 'tools'];
@@ -77,6 +58,8 @@ async function actionChoice(fileChoice: string) {
         resolve(input.trim());
         });
     });
+
+    filePath = await creatFile(path.basename(fileChoice, path.extname(fileChoice)), actions[Number(answer)-1])
 
     const choice = Number(answer);
     if (![1, 2, 3].includes(choice)) {
@@ -120,6 +103,7 @@ export async function simulate() {
     while (!fileChoice) {
         fileChoice = await promptChoice(allFiles);
     }
+    creatFolder(path.basename(fileChoice, path.extname(fileChoice)));
 
     let prompt: any;
 
@@ -134,5 +118,5 @@ export async function simulate() {
 
     await fs.writeFile(promptPath, promptText, 'utf-8');
 
-    watchPrompt();
+    watchPrompt(filePath);
 }
