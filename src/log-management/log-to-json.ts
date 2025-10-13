@@ -1,9 +1,10 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { getAllFiles } from "./file-management";
+import { getAllFiles } from "../file-management";
+import { removeContent } from "./remove-content";
 
-const logsDir = path.resolve(__dirname, "..", "logs/input");
-const outDir  = path.join(__dirname, '..', 'logs/output');
+const logsDir = path.resolve(__dirname, "../../", "logs/input");
+const outDir  = path.join(__dirname, '../../', 'logs/output');
 
 async function convertToJSON(srcPath: string) {
   const content = await fs.readFile(srcPath, 'utf8');
@@ -19,6 +20,10 @@ async function convertToJSON(srcPath: string) {
 
   const base = path.basename(srcPath).replace(/\.[^/.]+$/g, '');
   const outPath = path.join(outDir, `${base}.json`);
+
+  if(removeContent(parsedLines)){
+    return;
+  }
 
   await fs.mkdir(outDir, { recursive: true });
   await fs.writeFile(outPath, JSON.stringify(parsedLines, null, 2), "utf8");

@@ -9,7 +9,7 @@ const outDir  = path.join(__dirname, '..', 'logs/output');
 async function promptChoice(files: string[]): Promise<string | undefined> {
     if(files.length === 0) {
         console.log('Nenhum arquivo JSON encontrado em logs/output/.');
-        return;
+        process.exit(0);
     }
 
     console.log('Escolha um JSON disponíveis:');

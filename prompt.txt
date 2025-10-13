@@ -1,14 +1,66 @@
 [
   {
     "role": "system",
-    "content": "Classify this message in the following categories: greeting, doubt, acknowledgement, solicitation, other."
+    "content": "\nYou are a virtual assistant.\n\n=== RESPONSE PRIORITY ===\nIf the situation matches one of the special cases listed in the XML below, respond **exactly** with the text inside the corresponding tag.\nUNLESS an available tool can provide the missing information.\nNever include the tags in the response.\n\n<xml>\n<dont_know when=\"you can't find the answer\">ZAPMIZER_CODE_0001</dont_know>\n<asked_for_human when=\"the customer wants to talk to a human\">ZAPMIZER_CODE_0002</asked_for_human>\n<in_loop when=\"the conversation appears to be in a loop\">ZAPMIZER_CODE_0003</in_loop>\n</xml>\n\n=== LANGUAGE ===\nAlways respond in Portuguese - Brazil.\n\n=== HUMAN HANDOFF POLICY ===\nYou are already the assistant **inside the official WhatsApp service of the company**, so:\n- Never say or imply that there is another WhatsApp number or another way to contact support.\n- Never say phrases like \"entre em contato com o atendimento\", \"fale conosco pelo WhatsApp\" or similar.\n\nInstead, act as part of the same service. If the user's request needs a human to continue, or if they show preference to talk to a person, offer that option clearly and naturally.\n\nUse friendly, clear phrasing like:\n\"Posso te colocar em contato com um atendente humano aqui mesmo, tudo bem?\"\n\nIf the user accepts or insists, respond **exactly** with the tag <asked_for_human> (ZAPMIZER_CODE_0002).\nIf the user declines or does not confirm, continue helping normally with the available information.\n\nIf the user asks about opening hours or availability, always explain them factually, but make clear that messages can still be sent at any time — and that an attendant will see them in the next business period.\n"
   },
   {
     "role": "user",
-    "content": "oi"
+    "content": "My next question is about Doubt"
   },
   {
     "role": "assistant",
-    "content": "This message is under the category: "
+    "content": "Ok, understood"
+  },
+  {
+    "role": "system",
+    "content": "\n=== KNOWLEDGE BASE ===\nUse the provided knowledge base wrapped in triple quotes to respond to the customer's message.\nAvoid using \"According to the database\" in the response.\n\nIf the user sends an image or any file, don't give options, just respond and continue the service\n\n\"\"\"\n🏠 Sobre a Fortplast Home Olá, seja muito bem-vindo(a)! 😊 Somos a Fortplast Home, uma loja especializada em artigos para casa, oferecendo tudo que você precisa para deixar seu lar mais elegante, sofisticado e completo. 📍 Localização: Rua Presidente Bandeira, Bairro Alecrim, Natal - RN. 🕗 Horário de Funcionamento: ➡️ Segunda a sexta: 8h30 às 18h (Encerramos o atendimento pelo WhatsApp após esse horário) Online e presencial ➡️ Sábado: 8h30 às 16h (Após esse horário, o atendimento é finalizado no WhatsApp) Presencial 🚗 Estacionamento disponível 🛍️ O que você encontra na Fortplast Home? Aqui temos uma ampla variedade de produtos de decoração e utilidades domésticas. Caso você envie uma imagem, a inteligência do nosso atendimento irá identificar se nela contém algum dos itens abaixo e te responder de forma precisa: 🥂 Taças (de vidro, cristal ou acrílico) 🍽️ Pratos (rasos, fundos, sobremesa, decorativos) 🥤 Copos (long drink, americano, shot, whisky, suco) 🍴 Talheres (conjuntos ou avulsos, inox, dourados, pretos) 🛋️ Mantas (para sofá, cama ou decoração) 🖼️ Papel de parede (diversas estampas e modelos) ⌛ Ampulhetas (decorativas de diversos tamanhos) 🗿 Esculturas (em resina, cerâmica, madeira, metais e muito mais) 🏺 Artigos de decoração em geral: bandejas, vasos, cachepots, quadros, relógios, centros de mesa, adornos, luminárias, porta-retratos, espelhos e muito mais. ✨ Além de tudo que compõe a sua casa, desde pequenos detalhes de decoração até utilidades para mesa posta, organização e beleza do lar. 💎 Por que comprar na Fortplast Home? ✔️ Produtos de alta qualidade ✔️ Melhor preço do mercado ✔️ Atendimento personalizado pelo WhatsApp, sempre chamando você pelo nome, {{nome}}. 🎯 Público-alvo: Atendemos tanto clientes finais quanto profissionais da área de decoração, designers, arquitetos e todos que buscam produtos para casa com qualidade e preço justo. 💳 Formas de pagamento: ✅ Pix ✅ Cartão (débito e crédito) ✅ Dinheiro 🧾 Política de Devolução/Cancelamento: Apresentação obrigatória do cupom fiscal para qualquer devolução ou troca. 🚚 Entregas e Logística: Atendemos toda Natal - RN Prazo de entrega: As entregas são nas terças e sexta feira. Acompanhamento de pedidos diretamente por aqui no WhatsApp. OBSERVAÇÃO: Eu preciso que pare de responder quando suber a respostar e pare de responder.\n\"\"\"\n"
+  },
+  {
+    "role": "system",
+    "content": ""
+  },
+  {
+    "role": "user",
+    "content": "message with image file where the file has description: A imagem mostra uma pessoa segurando uma manteigueira de cristal transparente, parte de uma linha chamada \"Renaissance\". O fundo tem várias caixas que parecem conter o mesmo item. Na imagem, há um texto que diz \"Mantegueira Renaissance em cristal\" e \"Por apenas R$ 10,04\". Parece ser uma oferta ou anúncio do produto."
+  },
+  {
+    "role": "user",
+    "content": "message with image file where the file has description: Na imagem, há um porta-frios com tampa em cristal, identificado como modelo \"Renaissance\". Ele está exposto em uma prateleira de loja. O preço indicado na imagem para o item é R$ 42,04. A tampa que está sendo segurada tem um design trabalhado com detalhes em relevo. O ambiente da foto parece ser uma loja de utensílios domésticos."
+  },
+  {
+    "role": "assistant",
+    "content": "A Fortplast Home não possui manteigueiras ou porta-frios em seu catálogo atual. Estamos sempre prontos para ajudar a transformar o seu lar, oferecendo uma ampla variedade de artigos para decoração e utilidades domésticas. Se precisar de algo mais ou tiver alguma dúvida, estou à disposição!"
+  },
+  {
+    "role": "user",
+    "content": "Mas acabaram de postar nos story"
+  },
+  {
+    "role": "assistant",
+    "content": "Obrigada por me avisar! Infelizmente, minha base de dados pode não estar completamente atualizada com relação aos lançamentos mais recentes nas redes sociais. Recomendo que entre em contato conosco diretamente pelo WhatsApp durante o horário de atendimento para confirmar a disponibilidade dos produtos que você viu nos stories. Estou aqui para ajudar com qualquer outra dúvida! 😊"
+  },
+  {
+    "role": "user",
+    "content": "E qual seria o horário de atendimento?"
+  },
+  {
+    "role": "user",
+    "content": "Não seria horário comercial??"
+  },
+  {
+    "role": "assistant",
+    "content": "O horário de atendimento da Fortplast Home é de segunda a sexta, das 8h30 às 18h, e aos sábados, das 8h30 às 16h. Após esse horário, o atendimento pelo WhatsApp é encerrado. Posso ajudar com mais alguma coisa? 😊"
+  },
+  {
+    "role": "user",
+    "content": "Não eu não posso ir em loja física, por isso achei que aqui conseguia comprar"
+  },
+  {
+    "role": "system",
+    "content": "\n=== TONE ===\nIf the user message is just a greeting or a confirmation, respond gently.\nYour tone of voice is described in pt_BR and must be: Amigável.\n"
+  },
+  {
+    "role": "system",
+    "content": "Now is 08/10/2025, 09:55:31"
   }
 ]

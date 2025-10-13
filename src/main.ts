@@ -1,4 +1,4 @@
-import { logToJson } from "./log-to-json";
+import { logToJson } from "./log-management/log-to-json";
 import { simulate } from "./simulate";
 
 async function main() {
