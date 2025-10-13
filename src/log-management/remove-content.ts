@@ -1,49 +1,44 @@
+interface ChoiceMessage {
+  role: string;
+  content: string;
+  refusal?: string | null;
+  annotations?: unknown[];
+}
+
+interface Choice {
+  index: number;
+  message: ChoiceMessage;
+  logprobs?: unknown | null;
+  finish_reason?: string;
+}
+
 interface LogEntry {
   msg?: string;
   reason?: string;
   raw?: string;
+  model? : string;
+  choices? : Choice[]
 }
 
 export function removeContent(parsedLines: LogEntry[]): boolean{
-  // mensagem analisada
-  const hasParsedMessage = parsedLines.some(
-    (entry) => entry.msg === "parsed message"
+  // tem model
+  const hasModel = parsedLines.some(
+    (entry) => entry.model === "gpt-4o"
   );
-  if (!hasParsedMessage){
+  if (!hasModel){
     return true;
   }
 
-  // tíquete aberto
-  const hasAutomationBlocked = parsedLines.some(
-    (entry) => entry.reason === "open ticket"
-  );
-  if (hasAutomationBlocked){
-    return true;
-  }
+  // const hasGreeting = parsedLines.some(
+  //   (entry) =>
+  //     entry.choices?.some(
+  //       (c) => c.message?.content?.trim().toLowerCase() === "greeting." || c.message?.content?.trim().toLowerCase() === "greeting"
+  //     )
+  // );
+  // if(hasGreeting){
+  //   return true;
+  // }
 
-  // fora de horario
-  const hasNotInWorkingHours = parsedLines.some(
-    (entry) => entry.reason === "not in working hours"
-  );
-  if (hasNotInWorkingHours){
-    return true;
-  }
-
-  // sessão paulsada
-  const hasSessionPaused = parsedLines.some(
-    (entry) => entry.reason === "session paused: attendant_took_over"
-  );
-  if (hasSessionPaused){
-    return true;
-  }
-
-  // não pode responder
-  const hasIgnoreBatchProcess = parsedLines.some(
-    (entry) => entry.msg === "ignore batch process: cannot suggest answer or chat not active"
-  );
-  if (hasIgnoreBatchProcess){
-    return true;
-  }
 
   return false;
 }
