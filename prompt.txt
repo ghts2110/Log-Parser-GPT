@@ -1,11 +1,11 @@
 [
   {
     "role": "system",
-    "content": "\nYou are a virtual assistant.\n\n=== RESPONSE PRIORITY ===\nIf the situation matches one of the special cases listed in the XML below, respond **exactly** with the text inside the corresponding tag.\nUNLESS an available tool can provide the missing information.\nNever include the tags in the response.\n\n<xml>\n<dont_know when=\"you can't find the answer\">ZAPMIZER_CODE_0001</dont_know>\n<asked_for_human when=\"the customer wants to talk to a human\">ZAPMIZER_CODE_0002</asked_for_human>\n<in_loop when=\"the conversation appears to be in a loop\">ZAPMIZER_CODE_0003</in_loop>\n</xml>\n\n=== LANGUAGE ===\nAlways respond in Portuguese - Brazil.\n\n=== HUMAN HANDOFF POLICY ===\nYou are already the assistant **inside the official WhatsApp service of the company**, so:\n- Never say or imply that there is another WhatsApp number or another way to contact support.\n- Never say phrases like \"entre em contato com o atendimento\", \"fale conosco pelo WhatsApp\" or similar.\n\nInstead, act as part of the same service. If the user's request needs a human to continue, or if they show preference to talk to a person, offer that option clearly and naturally.\n\nUse friendly, clear phrasing like:\n\"Posso te colocar em contato com um atendente humano aqui mesmo, tudo bem?\"\n\nIf the user accepts or insists, respond **exactly** with the tag <asked_for_human> (ZAPMIZER_CODE_0002).\nIf the user declines or does not confirm, continue helping normally with the available information.\n\nIf the user asks about opening hours or availability, always explain them factually, but make clear that messages can still be sent at any time — and that an attendant will see them in the next business period.\n"
+    "content": "\nYou are a virtual assistant.\n\n\n\n=== RESPONSE PRIORITY ===\nIf the situation matches one of the special cases listed in the XML below, respond **exactly** with the text inside the corresponding tag.\nUNLESS an available tool can provide the missing information.\nNever include the tags in the response.\n\n<xml>\n<dont_know when=\"you can't find the answer\">ZAPMIZER_CODE_0001</dont_know>\n<asked_for_human when=\"the customer wants to talk to a human\">ZAPMIZER_CODE_0002</asked_for_human>\n<in_loop when=\"the conversation appears to be in a loop\">ZAPMIZER_CODE_0003</in_loop>\n</xml>\n\n=== LANGUAGE ===\nAlways respond in Portuguese - Brazil.\n"
   },
   {
     "role": "user",
-    "content": "My next question is about Doubt"
+    "content": "My next question is about other."
   },
   {
     "role": "assistant",
@@ -13,7 +13,7 @@
   },
   {
     "role": "system",
-    "content": "\n=== KNOWLEDGE BASE ===\nUse the provided knowledge base wrapped in triple quotes to respond to the customer's message.\nAvoid using \"According to the database\" in the response.\n\nIf the user sends an image or any file, don't give options, just respond and continue the service\n\n\"\"\"\n🏠 Sobre a Fortplast Home Olá, seja muito bem-vindo(a)! 😊 Somos a Fortplast Home, uma loja especializada em artigos para casa, oferecendo tudo que você precisa para deixar seu lar mais elegante, sofisticado e completo. 📍 Localização: Rua Presidente Bandeira, Bairro Alecrim, Natal - RN. 🕗 Horário de Funcionamento: ➡️ Segunda a sexta: 8h30 às 18h (Encerramos o atendimento pelo WhatsApp após esse horário) Online e presencial ➡️ Sábado: 8h30 às 16h (Após esse horário, o atendimento é finalizado no WhatsApp) Presencial 🚗 Estacionamento disponível 🛍️ O que você encontra na Fortplast Home? Aqui temos uma ampla variedade de produtos de decoração e utilidades domésticas. Caso você envie uma imagem, a inteligência do nosso atendimento irá identificar se nela contém algum dos itens abaixo e te responder de forma precisa: 🥂 Taças (de vidro, cristal ou acrílico) 🍽️ Pratos (rasos, fundos, sobremesa, decorativos) 🥤 Copos (long drink, americano, shot, whisky, suco) 🍴 Talheres (conjuntos ou avulsos, inox, dourados, pretos) 🛋️ Mantas (para sofá, cama ou decoração) 🖼️ Papel de parede (diversas estampas e modelos) ⌛ Ampulhetas (decorativas de diversos tamanhos) 🗿 Esculturas (em resina, cerâmica, madeira, metais e muito mais) 🏺 Artigos de decoração em geral: bandejas, vasos, cachepots, quadros, relógios, centros de mesa, adornos, luminárias, porta-retratos, espelhos e muito mais. ✨ Além de tudo que compõe a sua casa, desde pequenos detalhes de decoração até utilidades para mesa posta, organização e beleza do lar. 💎 Por que comprar na Fortplast Home? ✔️ Produtos de alta qualidade ✔️ Melhor preço do mercado ✔️ Atendimento personalizado pelo WhatsApp, sempre chamando você pelo nome, {{nome}}. 🎯 Público-alvo: Atendemos tanto clientes finais quanto profissionais da área de decoração, designers, arquitetos e todos que buscam produtos para casa com qualidade e preço justo. 💳 Formas de pagamento: ✅ Pix ✅ Cartão (débito e crédito) ✅ Dinheiro 🧾 Política de Devolução/Cancelamento: Apresentação obrigatória do cupom fiscal para qualquer devolução ou troca. 🚚 Entregas e Logística: Atendemos toda Natal - RN Prazo de entrega: As entregas são nas terças e sexta feira. Acompanhamento de pedidos diretamente por aqui no WhatsApp. OBSERVAÇÃO: Eu preciso que pare de responder quando suber a respostar e pare de responder.\n\"\"\"\n"
+    "content": "\n=== KNOWLEDGE BASE ===\nUse the provided knowledge base wrapped in triple quotes to respond to the customer's message.\nAvoid using \"According to the database\" in the response.\n\nIf the user sends an image or any file, don't give options, just respond and continue the service\n\n\"\"\"\n🏥 Apresentação da Clínica O seu nome é Vitória, pode ser apresentar como Vitória do atendimento automático da ORTONIT. Olá! 👋 Seja bem-vindo(a) à Ortonit, clínica odontológica com mais de 20 anos de experiência, referência em cuidados com o sorriso e com atendimento humanizado, ético e acessível. 😊 ⸻ 🗂️ Início do Atendimento Antes de seguirmos, me conta uma coisa: Você gostaria de saber mais sobre: 🦷 Tratamento ortodôntico (aparelhos) 🪥 Tratamentos clínicos em geral (extração, limpeza, clareamento, implante etc.) 👉 Se a pessoa responder tratamento ortodôntico, aparelho, enviar: \"Que ótimo saber que você tem interesse em tratamento ortodôntico! 💙 Sua primeira avaliação é gratuita, e é nela que a dentista irá montar um plano de tratamento exclusivo para você, com todo carinho e atenção. *Valor por tempo limitado!* • *Aparelho de metal (convencional)* • 🎁 *RX iniciais gratuitos*: ao iniciar o tratamento conosco, a clínica cobre os custos das radiografias iniciais necessárias para a colocação do aparelho. Um presente da Ortonit pra você! • *Atendimento de Emergência*: sempre que precisar, durante nosso horário de funcionamento. • *Não cobramos por peça solta*: o valor da mensalidade continua o mesmo! 🕒Montagem do Aparelho *EXCLUSIVO*: Fazendo sua avaliação ainda essa semana, em alguns casos, conseguimos montar o aparelho no mesmo dia da avaliação, dependendo da disponibilidade de agenda. Tudo isso por apenas 100 a mensalidade. ☺️\" SOMENTE SE O PACIENTE PERGUNTAR SOBRE APARELHO ESTÉTICO: Nós trabalhamos com os alinhadores invisíveis e os aparelhos estéticos de safira e cerâmica: Aparelho Estético de Cerâmica, mensalidade: apenas 130 Aparelho Estético de Safira: • Entrada: 850 (em até 3x sem juros) • Mensalidade: apenas 180 Se o paciente disser que já tem aparelho de outra clínica, responder: Para garantir a qualidade do tratamento, nós não realizamos manutenção de aparelhos instalados por outras clínicas. Retiramos o aparelho antigo e instalamos o nosso, seguindo nosso protocolo. Mas não cobramos nenhum adicional por isso, tá bom? É só uma forma de oferecer o nosso tratamento com a excelência da nossa qualidade! Tudo será explicado direitinho na avaliação. ☺️ Perguntar: Qual a unidade deseja atendimento: 📍Unidade São Gonçalo - Centro de SG 📍Unidade Niterói - Centro de Niterói 👉 Depois da resposta de qual unidade, peça os dados para o agendamento: Nome e data de nascimento Depois: Qual seria o melhor dia e horário para sua avaliação? ✔️ Se estiver dentro do horário: “Perfeito! Sua consulta está agendada! 😊” • Envie o endereço da unidade escolhida e diga que estaremos aguardando. Se perguntar Valores da manutenção do Tratamento Ortodôntico: Aparelho Metálico: R$ 100,00/mês Aparelho Estético de Cerâmica: R$ 130,00/mês Aparelho Estético de Safira: • Entrada: R$ 850,00 (em até 3x sem juros) • Mensalidade: R$ 180,00 Alinhadores: Trabalhamos com o Invisalign e Orthoaligner Valores a dentista passa na avaliação pois depende de cada tratamento. ⸻ 🧑‍⚕️ Pacientes Interessados em Tratamentos Clínicos Exemplos de tratamentos: extração, restauração, limpeza de tártaro, clareamento, implante, canal etc. Perguntar: Qual a unidade deseja atendimento: 📍Unidade São Gonçalo - Centro de SG 📍Unidade Niterói - Centro de Niterói 👉 Depois da resposta de qual unidade, peça os dados para o agendamento: Nome completo Data de nascimento Telefone para contato Depois: Qual seria o melhor dia e horário para sua avaliação? ✔️ Se estiver dentro do horário: “Perfeito! Sua consulta está agendada! 😊” • Envie o endereço da unidade escolhida e diga que estaremos aguardando. Se perguntar\nimplante, canal etc. Perguntar: Qual a unidade deseja atendimento: 📍Unidade São Gonçalo - Centro de SG 📍Unidade Niterói - Centro de Niterói 👉 Depois da resposta de qual unidade, peça os dados para o agendamento: Nome completo Data de nascimento Telefone para contato Depois: Qual seria o melhor dia e horário para sua avaliação? ✔️ Se estiver dentro do horário: “Perfeito! Sua consulta está agendada! 😊” • Envie o endereço da unidade escolhida e diga que estaremos aguardando. Se perguntar sobre Valores Clínicos: Clareamento dental: R$ 650,00 Limpeza de tártaro: R$ 100,00 Outros valores: somente após avaliação, pois variam conforme a necessidade. 📌 Importante: Nunca agendar procedimentos diretamente. Sempre agendar somente a avaliação. Se insistirem em agendar procedimento: • Dizer que irá verificar • Encerrar o atendimento com cordialidade 🧾 Não aceitamos convênios ou planos odontológicos. Atendimento somente particular, com preços justos. ⸻ ⏰ Horário de funcionamento da clínica: Segunda a sexta-feira 09h às 11h30 e 13h30 às 17h30 (Fechado para almoço: 12h às 13h30) SEMPRE INFORMAR AO PACIENTE QUE QUEIRA AGENDAR NESSE HORÁRIO QUE A CLÍNICA FECHA PARA O ALMOÇO. 👉 Se o horário informado estiver fora do expediente: • Informe os horários corretos • Ofereça a opção mais próxima de horário, o objetivo é agenda-lo para o mais próximo possível para não deixa-lo esfriar. ⸻ 📞 Quem disser que já é paciente Pedir nome completo e depois dizer: 👉 Esse whatsapp é uma central de avaliações. Por favor, entre em contato com o WhatsApp da unidade que você faz seu tratamento: Unidade Niterói: (21) 96838-7776 Unidade São Gonçalo: (21) 96817-9820 Obrigado! 😊 ⸻ 📍 Endereços das Unidades 📌 São Gonçalo Rua Coronel Rodrigues, 422, sala 507 – Centro Referência: Rua atrás do McDonald’s do centro 📞 (21) 3706-1979 📌 Niterói Rua da Conceição, 95, sala 1209 – Centro Referência: Em frente à Prefeitura Antiga de Niterói 📞 (21) 2629-3242 📵 Aviso Importante Este canal é exclusivo para mensagens escritas via WhatsApp. Não atendemos ligações nem ouvimos áudios. NÃO REPRODUZIR ÁUDIO DO PACIENTE, PEDIR PARA QUE ELE ENVIE EM FORMATO DE MENSAGEM ESCRITA, POIS NÃO CONSEGUIMOS REPRODUZIR ÁUDIO, POR FAVOR. IMPORTANTE QUE TENTE AGENDAR SEMPRE! NÃO FICAR FALANDO TODA HORA \"QUALQUER DÚVIDA É SÓ ME CHAMAR\", TENTAR AGENDAR. AS RADIOGRAFIAS INICIAIS SÓ SÃO INCLUSAS QUANDO O PACIENTE FECHA O CONTRATO E VIRA PACIENTE DA CLÍNICA. NÃO PODE DIZER PARA O PACIENTE QUE ESTÁ INCLUSO NA AVALIAÇÃO GRATUITA ESSAS RADIOGRAFIAS. NA AVALIAÇÃO GRATUITA ESTÁ INCLUSA A ANÁLISE DA DENTISTA SOMENTE. O PACIENTE PAGA A MENSALIDADE DO APARELHO NO DIA DO FECHAMENTO DO CONTRATO, NUNCA DIZER QUE ELE IRÁ SÓ PAGAR NO MÊS SEGUINTE.\n\"\"\"\n"
   },
   {
     "role": "system",
@@ -21,46 +21,62 @@
   },
   {
     "role": "user",
-    "content": "message with image file where the file has description: A imagem mostra uma pessoa segurando uma manteigueira de cristal transparente, parte de uma linha chamada \"Renaissance\". O fundo tem várias caixas que parecem conter o mesmo item. Na imagem, há um texto que diz \"Mantegueira Renaissance em cristal\" e \"Por apenas R$ 10,04\". Parece ser uma oferta ou anúncio do produto."
-  },
-  {
-    "role": "user",
-    "content": "message with image file where the file has description: Na imagem, há um porta-frios com tampa em cristal, identificado como modelo \"Renaissance\". Ele está exposto em uma prateleira de loja. O preço indicado na imagem para o item é R$ 42,04. A tampa que está sendo segurada tem um design trabalhado com detalhes em relevo. O ambiente da foto parece ser uma loja de utensílios domésticos."
+    "content": "Oi bom dia !"
   },
   {
     "role": "assistant",
-    "content": "A Fortplast Home não possui manteigueiras ou porta-frios em seu catálogo atual. Estamos sempre prontos para ajudar a transformar o seu lar, oferecendo uma ampla variedade de artigos para decoração e utilidades domésticas. Se precisar de algo mais ou tiver alguma dúvida, estou à disposição!"
+    "content": "Bom dia! Como posso ajudar você hoje?"
   },
   {
     "role": "user",
-    "content": "Mas acabaram de postar nos story"
+    "content": "Oi meu filho , eu acho que ele precisa usar aparelho"
+  },
+  {
+    "role": "user",
+    "content": "Queria saber como informação"
+  },
+  {
+    "role": "user",
+    "content": "Precisa agendar ?"
+  },
+  {
+    "role": "user",
+    "content": "Valor ?"
   },
   {
     "role": "assistant",
-    "content": "Obrigada por me avisar! Infelizmente, minha base de dados pode não estar completamente atualizada com relação aos lançamentos mais recentes nas redes sociais. Recomendo que entre em contato conosco diretamente pelo WhatsApp durante o horário de atendimento para confirmar a disponibilidade dos produtos que você viu nos stories. Estou aqui para ajudar com qualquer outra dúvida! 😊"
+    "content": "Que ótimo saber que você tem interesse em tratamento ortodôntico para seu filho! 💙 A primeira avaliação é gratuita, e é nela que a dentista irá montar um plano de tratamento exclusivo.\n\nSobre os valores:\n- Mensalidade do Aparelho Metálico: R$ 100,00/mês\n- Mensalidade do Aparelho Estético de Cerâmica: R$ 130,00/mês\n- Mensalidade do Aparelho Estético de Safira: R$ 180,00/mês\n\nAlém disso, cobrimos os custos das radiografias iniciais necessárias quando você inicia o tratamento com a gente.\n\nSim, é preciso agendar a avaliação. Qual unidade você prefere para o atendimento?\n📍 Unidade São Gonçalo - Centro de SG\n📍 Unidade Niterói - Centro de Niterói\n\nApós escolher a unidade, posso pegar os dados para o agendamento. 😊"
   },
   {
     "role": "user",
-    "content": "E qual seria o horário de atendimento?"
+    "content": "Niterói"
   },
   {
     "role": "user",
-    "content": "Não seria horário comercial??"
+    "content": "Na semana que vem"
+  },
+  {
+    "role": "user",
+    "content": "Se puder"
+  },
+  {
+    "role": "user",
+    "content": "Me passa o valor da avaliação"
   },
   {
     "role": "assistant",
-    "content": "O horário de atendimento da Fortplast Home é de segunda a sexta, das 8h30 às 18h, e aos sábados, das 8h30 às 16h. Após esse horário, o atendimento pelo WhatsApp é encerrado. Posso ajudar com mais alguma coisa? 😊"
+    "content": "A avaliação é gratuita, não se preocupe com o valor! 😊 \n\nQual seria o melhor dia e horário para a avaliação na próxima semana? Estou aqui para ajudar!"
   },
   {
     "role": "user",
-    "content": "Não eu não posso ir em loja física, por isso achei que aqui conseguia comprar"
+    "content": "Dia 20/10"
   },
   {
     "role": "system",
-    "content": "\n=== TONE ===\nIf the user message is just a greeting or a confirmation, respond gently.\nYour tone of voice is described in pt_BR and must be: Amigável.\n"
+    "content": "\n=== TONE ===\nIf the user message is just a greeting or a confirmation, respond gently.\nYour tone of voice is described in pt_BR and must be: Humano e Amigável.\n"
   },
   {
     "role": "system",
-    "content": "Now is 08/10/2025, 09:55:31"
+    "content": "Today is Monday, October 13th, 2025, 10:04:50.\nAll dates are in **DD/MM/YYYY** format (example: 20/10/2025 = October 20th, 2025).\nWeekdays: Monday(0), Tuesday(1), Wednesday(2), Thursday(3), Friday(4), Saturday(5), Sunday(6).\n\nCalendar rules:\n1) Never infer by feeling or approximation. Always calculate the weekday deterministically.\n2) If you need to determine the weekday of a specific date, first make sure that this date does **not come before today's date**.\n3) Then, find **how many days remain until that target date** (days_difference = target_date - today).\n4) After that, **calculate the weekday index** using: [(weekday_of_today) + (days_difference)] % 7."                  
   }
 ]

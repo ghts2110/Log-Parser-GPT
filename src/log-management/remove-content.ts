@@ -22,9 +22,7 @@ interface LogEntry {
 
 export function removeContent(parsedLines: LogEntry[]): boolean{
   // tem model
-  const hasModel = parsedLines.some(
-    (entry) => entry.model === "gpt-4o"
-  );
+  const hasModel = parsedLines.some((entry) => entry.model);
   if (!hasModel){
     return true;
   }
