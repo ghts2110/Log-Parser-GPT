@@ -23,7 +23,7 @@ function filter(parsedLines: LogEntry[]){
     }
 }
 
-async function countDifferentNumbers(){
+export async function countDifferentNumbers(){
     const allFiles = await getAllFiles(outDir);
     
     if (allFiles.length === 0) {

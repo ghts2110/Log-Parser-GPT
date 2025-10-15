@@ -34,10 +34,12 @@ export async function logToJson() {
     
     if (allFiles.length === 0) {
         console.log('Nenhum arquivo encontrado em logs/input/.');
-        return;
+        return 0;
     }
         
     for (const f of allFiles) {
         await convertToJSON(f);
     }
+
+    return (await getAllFiles(outDir)).length
 }

@@ -1,3 +1,4 @@
+import { countDifferentNumbers } from "./functions-for-counting/counter-of-different-numbers"
 import { logToJson } from "./log-management/log-to-json";
 import { simulate } from "./simulate";
 
@@ -6,7 +7,14 @@ async function main() {
   const shouldConvert = args.includes("--convert");
 
   if (shouldConvert) {
-    await logToJson();
+    let numMessages = 0, numConversations = 0, numGoodConversations = 0;
+    numMessages = await logToJson();
+
+    if(!numMessages){
+      console.log("Nunhuma mensagem encontrada");
+    }
+
+    return;
   }
 
   simulate();
