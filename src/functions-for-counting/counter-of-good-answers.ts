@@ -1,5 +1,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { callLLM } from "../evals/llm-Evaluator";
 import { getAllFiles } from "../file-management";
 
 const outDir  = path.join(__dirname, '../../', 'logs/output');
@@ -23,7 +24,7 @@ interface LogEntry {
     reply?: Reply;
 }
 
-function collectData(content: LogEntry[]){
+async function collectData(content: LogEntry[], filePath: string){
     let context: string = "";
     let question: string = "";
     let answer: string = "";
@@ -50,7 +51,10 @@ function collectData(content: LogEntry[]){
         }
     }
 
-    // passar para o LLM verificar
+    const result: string = await callLLM(context, question, answer);
+    if(!result){
+        console.log(filePath)
+    }
 }
 
 async function countGood(){
@@ -64,7 +68,7 @@ async function countGood(){
     for (const f of allFiles) {
         const content = JSON.parse(await fs.readFile(f, 'utf8'))
 
-        collectData(content)
+        collectData(content, f);
     }
 
     // printar o resultado
