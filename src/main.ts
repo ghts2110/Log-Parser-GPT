@@ -12,7 +12,15 @@ async function main() {
 
     if(!numMessages){
       console.log("Nunhuma mensagem encontrada");
+      return;
     }
+
+    numConversations = await countDifferentNumbers()
+
+    console.log("Número de Mensagens:");
+    console.log(numMessages);
+    console.log("Número de Conversas:");
+    console.log(numConversations);
 
     return;
   }

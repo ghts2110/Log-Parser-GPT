@@ -1,10 +1,18 @@
-interface Message {
-    role?: string;
-    content: string;
+
+
+interface Id {
+    remote?: string;
 }
 
 interface _Data {
     body?: string;
+    id? : Id;
+}
+
+interface Message {
+    role?: string;
+    content: string;
+    _data?: _Data;
 }
 
 interface Reply {
@@ -13,7 +21,7 @@ interface Reply {
 
 export interface LogEntry {
     messages?: Message[];
+    message?: Message;
     text?: string;
-    chat?: string;
     reply?: Reply;
 }
