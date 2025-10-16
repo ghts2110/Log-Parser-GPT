@@ -4,25 +4,14 @@ const client = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
 
-export async function callLLM(context: string, question: string, answer: string): Promise<string> {
+export async function callLLM(conversations: string): Promise<string> {
     const prompt: string = `
-Você é um avaliador imparcial de respostas de assistente. Decida apenas se a resposta é SATISFATÓRIA (true) ou NÃO SATISFATÓRIA (false). 
-Pense nos critérios, mas retorne SOMENTE um booleano minúsculo, sem aspas, sem texto extra.
+Você é um avaliador imparcial de sentimento do usuário em uma conversa com um assistente. 
+Decida apenas se o usuário aparenta estar SATISFEITO (true) ou INSATISFEITO (false).
+Analise o tom, as palavras e a intenção implícita das mensagens.
 
-=========Contexto=========:
-${context}
-
-=========Pergunta do usuário=========:
-${question}
-
-=========Resposta do modelo=========:
-${answer}
-
-Critérios (todos precisam estar OK para retornar true):
-1) Exatidão: não contradiz o contexto; nada inventado.
-2) Utilidade: responde diretamente o que foi pedido e resolve a necessidade.
-3) Completude essencial: não deixa faltar algo crítico para agir/entender.
-4) Clareza e tom: claro, educado, sem confundir ou desviar.
+=========Conversa=========:
+${conversations}
     `;
 
     try {

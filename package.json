@@ -6,7 +6,6 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "ts-node src/main.ts",
-		"counte-numbers": "ts-node src/functions-for-counting/counter-of-different-numbers",
 		"counte-good": "ts-node src/functions-for-counting/counter-of-good-answers"
 	},
 	"repository": {

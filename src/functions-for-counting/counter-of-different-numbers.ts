@@ -11,7 +11,7 @@ const visitedChats = new Set<string>();
 
 async function filter(content: LogEntry[]){
     const { context, question, answer } = await collectData(content);
-    const text = `Pergunta: ${question}\nResposta: ${answer}\n\n`;
+    const text = `Pergunta: { ${question} }\nResposta: { ${answer} }\n\n`;
 
     for (const entry of content) {
         if (!entry.message?._data?.id?.remote) continue;

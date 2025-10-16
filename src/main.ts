@@ -1,4 +1,5 @@
 import { countDifferentNumbers } from "./functions-for-counting/counter-of-different-numbers"
+import { countGood } from "./functions-for-counting/counter-of-good-answers"
 import { logToJson } from "./log-management/log-to-json";
 import { simulate } from "./simulate";
 
@@ -15,12 +16,15 @@ async function main() {
       return;
     }
 
-    numConversations = await countDifferentNumbers()
+    numConversations = await countDifferentNumbers();
+    numGoodConversations = await countGood();
 
     console.log("Número de Mensagens:");
     console.log(numMessages);
     console.log("Número de Conversas:");
     console.log(numConversations);
+    console.log("Número de Conversas Boas:");
+    console.log(numGoodConversations);
 
     return;
   }
