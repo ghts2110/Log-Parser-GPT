@@ -21,11 +21,13 @@
 	"homepage": "https://github.com/ghts2110/Log-Parser-GPT#readme",
 	"devDependencies": {
 		"@biomejs/biome": "^2.2.5",
+		"@types/adm-zip": "^0.5.7",
 		"@types/node": "^24.7.0",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.9.3"
 	},
 	"dependencies": {
+		"adm-zip": "^0.5.16",
 		"deepeval-ts": "^0.1.9",
 		"openai": "^6.2.0",
 		"vitest": "^3.2.4"

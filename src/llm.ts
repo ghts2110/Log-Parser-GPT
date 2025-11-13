@@ -15,7 +15,7 @@ export async function callLLM(filePath: string): Promise<string> {
         const messages = JSON.parse(content);
 
         const answer = await client.chat.completions.create({
-            model: "gpt-4o",
+            model: "gpt-4o-mini",
             messages,
         });
 

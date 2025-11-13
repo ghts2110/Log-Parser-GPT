@@ -17,7 +17,7 @@ async function main() {
     }
 
     numConversations = await countDifferentNumbers();
-    numGoodConversations = await countGood();
+    // numGoodConversations = await countGood();
 
     console.log("Número de Mensagens:");
     console.log(numMessages);

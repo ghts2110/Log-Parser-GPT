@@ -1,31 +1,49 @@
 import type { LogEntry } from "./logEntry";
 
-export async function collectData(content: LogEntry[]){
-    let context: string = "";
-    let question: string = "";
-    let answer: string = "";
+// Removes line breaks and extra spaces, keeping the text in a single line
+const cleanSpaces = (text: string) => text.replace(/\s*\n\s*/g, ' ').trim();
 
-    for(const entry of content){
-        if(entry.messages){
-            for(const msg of entry.messages){
-                if(msg.role === "system"){
-                    context += msg.content;
-                }
+function extractQuestion(entry: LogEntry) {
+	if (!entry.messages) return '';
 
-                if(msg.role === "user"){
-                    question = msg.content;
-                }
-            }
-        }
+	for (const msg of entry.messages) {
+		if (msg.role === 'user') {
+			return msg.content;
+		}
+	}
 
-        if(entry.reply){
-            if(entry.reply._data){
-                if(entry.reply._data.body) {
-                    answer = entry.reply._data.body
-                }
-            }
-        }
-    }
+	return '';
+}
 
-    return { context, question, answer };
+function extractAnswer(entry: LogEntry) {
+	if (entry.reply?._data?.body) {
+		return entry.reply._data.body;
+	}
+
+	return '';
+}
+
+function collectPieceOfMessages(content: LogEntry[]) {
+	let userQuestion = '';
+	let assistantAnswer = '';
+
+	for (const entry of content) {
+		if (!userQuestion) {
+			userQuestion = extractQuestion(entry);
+		}
+
+		if (!assistantAnswer) {
+			assistantAnswer = extractAnswer(entry);
+		}
+	}
+
+	return { userQuestion, assistantAnswer };
+}
+
+export function collectMessage(content: LogEntry[]) {
+	let { userQuestion, assistantAnswer } = collectPieceOfMessages(content);
+	userQuestion = cleanSpaces(userQuestion);
+	assistantAnswer = cleanSpaces(assistantAnswer);
+
+	return { userQuestion, assistantAnswer };
 }

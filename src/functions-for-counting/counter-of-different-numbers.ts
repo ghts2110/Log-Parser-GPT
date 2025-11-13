@@ -1,7 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { getAllFiles } from "../file-management";
-import { collectData } from "./collectData"
+import { collectMessage } from "./collectData"
 import type { LogEntry } from "./logEntry";
 
 const outDir  = path.join(__dirname, '../../', 'logs/output');
@@ -10,8 +10,8 @@ const conversationsDir  = path.join(__dirname, '../../', 'logs/conversations');
 const visitedChats = new Set<string>();
 
 async function filter(content: LogEntry[]){
-    const { context, question, answer } = await collectData(content);
-    const text = `Pergunta: { ${question} }\nResposta: { ${answer} }\n\n`;
+    const { userQuestion, assistantAnswer } = await collectMessage(content);
+    const text = `Pergunta: { ${userQuestion} }\nResposta: { ${assistantAnswer} }\n\n`;
 
     for (const entry of content) {
         if (!entry.message?._data?.id?.remote) continue;
